@@ -1,8 +1,19 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Start Kananct Frontend Challenge
 
-## Getting Started
+React JS project using Next.js + TypeScript + React Query + Tailwind CSS.
 
-First, run the development server:
+For data fetching, I preferred to do it server-side to avoid the delay of fetching data from the client. From there, the data is modified using React Query.
+
+This was my first time using React Query, and I approached it assuming the data would persist at the session level. That’s why I created a custom hook to reuse the functions for editing, deleting, and adding patients, thinking the data would remain in localStorage.
+
+Since React Query does not have persistence by default, this part of the code should be improved, either by implementing API calls to the necessary endpoints or by storing the data locally with Zustand, or by persisting React Query’s state in some other way.
+
+For styling, I used Tailwind CSS.
+I created a Button component as an example of how an approach focused solely on Tailwind could work, including extending Tailwind's theme as well as using custom configs and parameters in the components.
+
+## Check the project
+
+just run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +27,12 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing Approach
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I have little experience with integration testing, but the most obvious approach would be to create integration tests for the core functionalities of the product: listing, editing, deleting, and adding patients and comments.
 
-## Learn More
+I would use React Testing Library to create the component tests.
 
-To learn more about Next.js, take a look at the following resources:
+Additionally, I would develop end-to-end (E2E) tests using Playwright to cover a complete user journey through all the functionalities of the product.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tests should be executed on the branches defined in the GitHub workflow, both before and after code implementation.
