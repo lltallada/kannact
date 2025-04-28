@@ -1,5 +1,6 @@
 'use client';
 
+import Button from '@/app/components/ui/Button';
 import { Note } from '@/app/types/note';
 import { UseMutationResult } from '@tanstack/react-query';
 
@@ -47,9 +48,7 @@ export default function NoteForm({
         onChange={e => setForm({ ...form, note: e.target.value })}
         required
       />
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded mt-2">
-        {isEditing ? 'Update Note' : 'Add Note'}
-      </button>
+      <Button>{isEditing ? 'Update Note' : 'Add Note'}</Button>
     </form>
   );
 }

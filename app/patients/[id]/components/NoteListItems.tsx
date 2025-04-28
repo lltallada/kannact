@@ -1,3 +1,4 @@
+import Button from '@/app/components/ui/Button';
 import { Note } from '@/app/types/note';
 
 export default function NotesListItems({
@@ -22,15 +23,12 @@ export default function NotesListItems({
               {new Intl.DateTimeFormat('en-GB').format(new Date(note.lastEdit))}
             </p>
             <div className="flex gap-2">
-              <button className="text-blue-500" onClick={() => onEdit(note)}>
+              <Button style="edit" onClick={() => onEdit(note)}>
                 Edit
-              </button>
-              <button
-                className="text-red-500"
-                onClick={() => onDelete(note.id)}
-              >
+              </Button>
+              <Button style="delete" onClick={() => onDelete(note.id)}>
                 Delete
-              </button>
+              </Button>
             </div>
           </div>
         </li>

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Container from './Container';
 
-export default function Header({ title }: { title: string }) {
+const Header = ({ title }: { title: string }) => {
   return (
     <div className="bg-white p-6 border-b border-black/10">
       <Container className="flex gap-4 items-center">
@@ -15,4 +15,6 @@ export default function Header({ title }: { title: string }) {
       </Container>
     </div>
   );
-}
+};
+
+export default Header;

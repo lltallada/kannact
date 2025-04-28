@@ -1,5 +1,6 @@
 'use client';
 
+import Button from '@/app/components/ui/Button';
 import { Patient, PatientListItemsProps } from '@/app/types/patient';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
@@ -28,9 +29,9 @@ export default function PatientListItems({
       {patients?.map(patient => (
         <li
           key={patient.id}
-          className="flex justify-between items-center odd:bg-gray-100 rounded-md group"
+          className="flex justify-between items-center odd:bg-gray-100 rounded-md"
         >
-          <button
+          <div
             onClick={() => handleSelectAndGo(patient)}
             className="p-4 w-full text-left group cursor-pointer"
           >
@@ -38,17 +39,14 @@ export default function PatientListItems({
               <strong>{patient.name}</strong> ({patient.age} years old) -{' '}
               {patient.condition}
             </div>
-          </button>
+          </div>
           <div className="flex gap-4 shrink-0 px-4">
-            <button onClick={() => onEdit(patient)} className="bg-yellow-400">
+            <Button onClick={() => onEdit(patient)} style="edit">
               Edit
-            </button>
-            <button
-              onClick={() => onDelete(patient.id)}
-              className="bg-red-500 text-white"
-            >
+            </Button>
+            <Button onClick={() => onDelete(patient.id)} style="delete">
               Delete
-            </button>
+            </Button>
           </div>
         </li>
       ))}

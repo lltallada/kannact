@@ -10,8 +10,8 @@ export function usePatientMutations() {
     mutationFn: (newPatient: Patient) => Promise.resolve(newPatient),
     onSuccess: newPatient => {
       queryClient.setQueryData<Patient[]>(['patients'], old => [
-        ...(old || []),
         newPatient,
+        ...(old || []),
       ]);
     },
   });

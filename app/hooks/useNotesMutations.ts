@@ -10,8 +10,8 @@ export function useNotesMutations() {
     mutationFn: async (note: Note) => note,
     onSuccess: newNote => {
       queryClient.setQueryData<Note[]>(['patient-notes'], (oldNotes = []) => [
-        ...oldNotes,
         newNote,
+        ...oldNotes,
       ]);
     },
   });
